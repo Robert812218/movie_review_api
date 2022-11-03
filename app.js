@@ -1,10 +1,11 @@
 const express = require('express');
+require('.db/');
+const userRouter = require('./routes/user');
+const mongoose = require('mongoose');
 
 const app = express();
-
-app.get('/', (req, res) => {
-	res.send('<h1>RESPONSE FROM BACKEND SERVER</h1>');
-})
+app.use(express.json());
+app.use('/api/user', userRouter);
 
 app.get('/about', (req, res) => {
 	res.send("<h1>RESPONSE FROM BACKEND SERVER</h1>");
